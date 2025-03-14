@@ -3,7 +3,6 @@ import pandas as pd
 import numpy as np
 from sklearn.model_selection import train_test_split
 
-
 def read_data(fn):
     data=[]
     with open(fn, 'r') as f:
@@ -26,18 +25,18 @@ def set_device():
   print(f"Using {device} device")
   return device
 
-def get_data(file_path):
+def get_data(file_path, filter=False):
     df = pd.read_csv(file_path, sep=r'\s+', header=None, names=[
         'OUT', 'EventID', 'TrackID', 'ParticleCount1', 'ParticleCount2', 'X', 'Y', 
         'dX', 'dY', 'E', 'P', 'ip', 'oop', 'vert_x', 'vert_y', 'vert_z'
     ])
-    df = df[['EventID', 'TrackID', 'P', 'ip', 'oop', 'X', 'Y', 'dX', 'dY']]
+
     return df
 
 def filter_data(electron_path, positron_path, side, scat):
     # load the datasets to be cleaned
-    electron_data = get_data(electron_path)
-    positron_data = get_data(positron_path)
+    electron_data = get_data(electron_path, filter=True)
+    positron_data = get_data(positron_path, filter=True)
 
     len_e1, len_p1 = len(electron_data), len(positron_data)
     print(f"Initial Electron rows: {len_e1}, Initial Positron rows: {len_p1}")
@@ -87,8 +86,8 @@ def filter_data(electron_path, positron_path, side, scat):
     filename_p = os.path.basename(positron_path) 
     filtered_file_path_e = os.path.join(filtered_dir, f"{filename_e}")
     filtered_file_path_p = os.path.join(filtered_dir, f"{filename_p}")
-    electron_filtered2.to_csv(filtered_file_path_e, index=False)
-    positron_filtered2.to_csv(filtered_file_path_p, index=False)
+    electron_filtered2.to_csv(filtered_file_path_e, index=False, sep=' ', header=False)
+    positron_filtered2.to_csv(filtered_file_path_p, index=False, sep=' ', header=False)
 
     print(f"Filtered Electron data saved at: {filtered_file_path_e}")
     print(f"Filtered Positron data saved at: {filtered_file_path_p}")
@@ -104,12 +103,9 @@ def filter_data(electron_path, positron_path, side, scat):
 
 
 def data(file_path, side, target='all', data_type='train'):
-    df = pd.read_csv(file_path, sep=r'\s+', header=None, names=[
-        'OUT', 'EventID', 'TrackID', 'ParticleCount1', 'ParticleCount2', 'X', 'Y', 
-        'dX', 'dY', 'E', 'P', 'ip', 'oop', 'vert_x', 'vert_y', 'vert_z'
-    ])
-
+    df = get_data(file_path)
     df = df[['P', 'ip', 'oop', 'X', 'Y', 'dX', 'dY']]
+
     X = df.drop(['P', 'ip', 'oop'], axis=1)
 
     # target selection
