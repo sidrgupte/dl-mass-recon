@@ -34,7 +34,7 @@ def get_data(file_path):
     df = df[['EventID', 'TrackID', 'P', 'ip', 'oop', 'X', 'Y', 'dX', 'dY']]
     return df
 
-def filter_data(electron_path, positron_path, data_type):
+def filter_data(electron_path, positron_path, side, scat):
     # load the datasets to be cleaned
     electron_data = get_data(electron_path)
     positron_data = get_data(positron_path)
@@ -93,7 +93,7 @@ def filter_data(electron_path, positron_path, data_type):
     print(f"Filtered Electron data saved at: {filtered_file_path_e}")
     print(f"Filtered Positron data saved at: {filtered_file_path_p}")
 
-    removed_eventid_file = os.path.join(filtered_dir, f"{data_type}_removed_eventids.txt")
+    removed_eventid_file = os.path.join(filtered_dir, f"{side}_{scat}_removed_eventids.txt")
     with open(removed_eventid_file, "w") as f:
         for event_id in all_removed_eventid:
             f.write(f"{event_id}\n")
