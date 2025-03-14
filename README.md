@@ -53,11 +53,10 @@ python --version
 pip list  # Shows installed packages
 ```
 
-## **📂 Project Structure**  
+<!-- ## **📂 Project Structure**  
 The project follows a modular structure to keep code, data, and results organized:  
+
 ---
-
-
 mass_recon/
 ├── data/                  # Contains datasets
 │   ├── raw/               # Unprocessed data directly from detectors
@@ -74,9 +73,7 @@ mass_recon/
 ├── README.md              # Project documentation
 ├── requirements.txt       # Python dependencies
 ├── .gitignore             # Files to exclude from version control
-
-
----
+--- -->
 
 
 
