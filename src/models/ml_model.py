@@ -71,7 +71,7 @@ class Analysis:
 
         return rmse
 
-    def run_optimization(self, n_trials, base_path):
+    def run_optimization(self, n_trials, path):
         """Runs Optuna hyperparameter tuning if self.optim is True."""
         print("Starting hyperparameter tuning...")
         study = optuna.create_study(direction='minimize')
@@ -85,9 +85,9 @@ class Analysis:
         self.optimization_time = e - s
 
         if self.scat=='y':
-            save_path = f"{base_path}/{self.side}_{self.target}_scat_params_dict.json"
+            save_path = f"{path}/{self.side}/{self.side}_{self.target}_scat_params_dict.json"
         elif self.scat=='n':
-            save_path = f"{base_path}/{self.side}_{self.target}_no_scat_params_dict.json"
+            save_path = f"{path}/{self.side}/{self.side}_{self.target}_no_scat_params_dict.json"
         with open(save_path, "w") as f:
             json.dump(self.best_params, f, indent=4)
 
@@ -114,14 +114,14 @@ class Analysis:
         print(f"Model trained in {self.training_time:.2f} seconds.")
         return self.model
 
-    def save_model(self, base_path):
+    def save_model(self, path):
         if not hasattr(self, 'model'):
             raise ValueError("No trained model found. Train the model before saving.")
        
         if self.scat=='y':
-            save_path = f"{base_path}models/{self.side}_{self.target}_scat.json"
+            save_path = f"{path}/{self.side}/{self.side}_{self.target}_scat.json"
         elif self.scat=='n':
-            save_path = f"{base_path}models/{self.side}_{self.target}_no_scat.json"
+            save_path = f"{path}/{self.side}/{self.side}_{self.target}_no_scat.json"
         self.model.save_model(save_path)
         print(f"Model saved successfully at: {save_path}")
         

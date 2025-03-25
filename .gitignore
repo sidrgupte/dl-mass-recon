@@ -1,0 +1,33 @@
+.ipynb_checkpoints/
+
+# system files:
+.DS_Store
+Thumbs.db
+
+# caches:
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# virt envs
+venv/
+.env
+
+# nb checkpoints
+logs/
+*.log
+*.tmp
+
+# raw data files
+data/raw
+data/intermediate
+
+# model checkpoints
+models/*.h5
+models/*.pt
+models/*.pkl
+models/*.onnx
+
+config.yaml
+.env
