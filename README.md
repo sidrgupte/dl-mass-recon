@@ -105,7 +105,7 @@ This script takes the filtered generator file, which contains only those `TrackI
 
 ---
 
-## **📂 Project Structure**
+<!-- ## **📂 Project Structure** -->
 
 <!-- ## **📂 Project Structure**  
 The project follows a modular structure to keep code, data, and results organized:  
