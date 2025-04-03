@@ -10,6 +10,9 @@ __pycache__/
 *.pyo
 *.pyd
 
+# log files
+*.log
+
 # virt envs
 venv/
 .env
@@ -22,6 +25,7 @@ logs/
 # raw data files
 data/raw
 data/intermediate
+data/filtered
 
 # model checkpoints
 models/*.h5

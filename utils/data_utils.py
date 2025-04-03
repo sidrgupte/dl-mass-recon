@@ -26,6 +26,8 @@ def set_device():
   return device
 
 def get_data(file_path, filter=False):
+    if not os.path.exists(file_path):
+        raise FileNotFoundError(f"The file at {file_path} does not exist.")
     df = pd.read_csv(file_path, sep=r'\s+', header=None, names=[
         'OUT', 'EventID', 'TrackID', 'ParticleCount1', 'ParticleCount2', 'X', 'Y', 
         'dX', 'dY', 'E', 'P', 'ip', 'oop', 'vert_x', 'vert_y', 'vert_z'
@@ -33,7 +35,7 @@ def get_data(file_path, filter=False):
 
     return df
 
-def filter_data(electron_path, positron_path, side, scat):
+def filter_data(electron_path, positron_path, type, scat):
     # load the datasets to be cleaned
     electron_data = get_data(electron_path, filter=True)
     positron_data = get_data(positron_path, filter=True)
@@ -92,7 +94,7 @@ def filter_data(electron_path, positron_path, side, scat):
     print(f"Filtered Electron data saved at: {filtered_file_path_e}")
     print(f"Filtered Positron data saved at: {filtered_file_path_p}")
 
-    removed_eventid_file = os.path.join(filtered_dir, f"{side}_{scat}_removed_eventids.txt")
+    removed_eventid_file = os.path.join(filtered_dir, f"{type}_{scat}_removed_eventids.txt")
     with open(removed_eventid_file, "w") as f:
         for event_id in all_removed_eventid:
             f.write(f"{event_id}\n")
