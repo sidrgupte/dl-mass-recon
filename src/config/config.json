@@ -1,0 +1,16 @@
+{
+    "path_train_electron": "/home/sid/coding/dark_light/mass_recon/data/raw/ElectronCoords_wide_acp.dat",
+    "path_test_electron": "/home/sid/coding/dark_light/mass_recon/data/raw/ElectronSort_signal.dat",
+
+    "path_train_positron": "/home/sid/coding/dark_light/mass_recon/data/raw/PositronCoords_wide_acp.dat",
+    "path_test_positron": "/home/sid/coding/dark_light/mass_recon/data/raw/PositronSort_signal.dat",
+
+    "path_generator_file": "/home/sid/coding/dark_light/mass_recon/data/raw/Signal_DL_SIG_13_30_elec36_pos20.dat",
+
+    "scat" : "y",
+
+    "optimize": "n",
+
+    "n_jobs": 10,
+    "verbose": true
+}
