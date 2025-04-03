@@ -3,7 +3,6 @@
 
 ## **📌 Table of Contents**
 - [Overview](#overview)
-<!-- - [Features](#features) -->
 - [Installation](#installation)
 - [Usage](#usage)
 - [Project Structure](#project-structure)
@@ -13,7 +12,7 @@
 
 ---
 
-## **📖 Overview**  
+## **📖 Overview**
 This project is a part of the **Mass Reconstruction** plugin for **DarkLight**. Its goal is to **reconstruct the mass at the reaction point** using hit data from GEM detectors.  
 
 Given the hit coordinates **(x, y)** and the angle of impact on the two GEM planes **(dx, dy)**, the model learns to map these values to:  
@@ -27,7 +26,7 @@ This mapping is trained using **XGBoost**. Once learned, the model uses these th
 ---
 
 ---
-## **⚙️ Installation**  
+## **⚙️ Installation**
 Follow these steps to set up the project on your local machine:  
 
 ### **1️⃣ Clone the Repository**  
@@ -52,9 +51,9 @@ pip install -r requirements.txt
 python --version
 pip list  # Shows installed packages
 ```
+---
 
-## **⚙️ Usage**  
-
+## **⚙️ Usage**
 To run the project, follow these steps:
 
 ### 1️⃣ Prepare the Data  
@@ -105,6 +104,9 @@ Finally, run the `mass_recon.py` script to perform mass reconstruction using the
 python src/mass_recon.py src/config/config.json
 ```
 This script takes the filtered generator file, which contains only those `TrackID`s present in the training and test datasets, and performs mass reconstruction. The resulting mass reconstruction plot is saved in the `results/images` directory.
+---
+
+## **📂 Project Structure**
 
 <!-- ## **📂 Project Structure**  
 The project follows a modular structure to keep code, data, and results organized:  
