@@ -5,7 +5,7 @@
 - [Overview](#overview)
 - [Installation](#installation)
 - [Usage](#usage)
-- [Project Structure](#project-structure)
+<!-- - [Project Structure](#project-structure)  -->
 <!-- - [Dataset](#dataset) -->
 <!-- - [Results](#results) -->
 <!-- - [Contributing](#contributing) -->
